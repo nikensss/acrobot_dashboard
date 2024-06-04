@@ -1,21 +1,20 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [command, setCommand] = useState("");
+  const [response, setResponse] = useState("");
+
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <input type="text" id="command" name="command" />
+      <h1 className="my-12 ">Acrobot</h1>
+      <div className="card flex flex-col gap-2">
+        <input
+          type="text"
+          name="command"
+          value={command}
+          onChange={(e) => setCommand(e.target.value)}
+        />
         <button
           onClick={async () => {
             const command = document.getElementById(
@@ -25,19 +24,15 @@ function App() {
               method: "POST",
               body: JSON.stringify({ command: command.value }),
             });
-            const text = await response.text();
-            console.log(text);
+            const json = await response.json();
+            console.log(json);
+            setResponse(JSON.stringify(json, null, 2));
           }}
         >
           Send test command
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <textarea className="w-96 h-60" value={response}></textarea>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
