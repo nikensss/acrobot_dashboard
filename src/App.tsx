@@ -1,16 +1,16 @@
 import { useState } from "react";
-import "./App.css";
 
 function App() {
   const [command, setCommand] = useState("");
   const [response, setResponse] = useState("");
 
   return (
-    <>
-      <h1 className="my-12 ">Acrobot</h1>
-      <div className="card flex flex-col gap-2">
+    <main className="flex flex-col items-center justify-center min-w-full">
+      <h1 className="my-12">Acrobot</h1>
+      <div className="flex flex-col gap-2">
         <input
           type="text"
+          className="rounded-md"
           name="command"
           value={command}
           onChange={(e) => setCommand(e.target.value)}
@@ -31,9 +31,12 @@ function App() {
         >
           Send test command
         </button>
-        <textarea className="w-96 h-60" value={response}></textarea>
+        <textarea
+          className="w-96 h-60 resize-none rounded-md"
+          value={response}
+        ></textarea>
       </div>
-    </>
+    </main>
   );
 }
 
