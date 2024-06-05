@@ -1,3 +1,5 @@
+import { Navbar } from '@/components/navbar';
+import { ThemeProvider } from '@/components/theme-provider';
 import { useState } from 'react';
 
 function App() {
@@ -6,7 +8,6 @@ function App() {
 
   return (
     <main className="flex min-w-full flex-col items-center justify-center">
-      <h1 className="my-12">Acrobot</h1>
       <div className="flex flex-col gap-2">
         <input
           type="text"
