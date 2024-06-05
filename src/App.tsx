@@ -1,5 +1,3 @@
-import { Navbar } from '@/components/navbar';
-import { ThemeProvider } from '@/components/theme-provider';
 import { useState } from 'react';
 
 function App() {
